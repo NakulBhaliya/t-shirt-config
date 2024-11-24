@@ -1,25 +1,22 @@
 # React Three Fiber Boilerplate
-
-A modern React-based 3D web development boilerplate using React Three Fiber. This template provides a clean starting point for creating interactive 3D web applications with React and Three.js.
+A minimal React Three Fiber boilerplate to help you get started with 3D web development using React. This template includes a basic scene setup with a rotating cube, proper lighting, camera controls, and responsive canvas.
 
 ## Features
-
-- **React Three Fiber** setup with modern React practices
-- **Vite** for fast development and optimized builds
-- **@react-three/drei** for ready-to-use Three.js helpers
-- Responsive 3D canvas
-- Modern project structure
-- ESLint configuration for code quality
-- Hot module replacement for fast development
-- TypeScript support
-- Production-ready build setup
+- React Three Fiber integration
+- Basic Three.js scene setup
+- Responsive canvas
+- OrbitControls for camera manipulation
+- Proper lighting setup
+- Shadow support
+- Animation system with consistent timing
+- Fullscreen support
+- Clean project structure
 
 ## Setup
-
-Make sure you have Node.js installed. Then run these commands:
+Download Node.js. Run these commands:
 
 ```bash
-# Install dependencies
+# Install dependencies (only the first time)
 npm install
 
 # Run the local server at localhost:5173
@@ -30,53 +27,40 @@ npm run build
 ```
 
 ## Project Structure
-
 ```
 ├── src/
 │   ├── components/
 │   │   └── Scene.jsx
-│   ├── assets/
 │   ├── App.jsx
-│   ├── App.css
-│   ├── main.jsx
-│   └── index.css
-├── public/
+│   └── main.jsx
 ├── index.html
 ├── package.json
-├── vite.config.js
-└── eslint.config.js
+└── vite.config.js
 ```
 
 ## Dependencies
-
-### Main Dependencies
-- React Three Fiber (^8.17.10)
-- React Three Drei (^9.117.3)
-- Three.js (^0.170.0)
-- React (^18.3.1)
-
-### Development Dependencies
-- Vite
-- ESLint
-- TypeScript types
+- React
+- React Three Fiber (@react-three/fiber)
+- Three.js
+- Vite (for building and development)
 
 ## Resources
 
-For more information and learning resources:
-
+For more Three.js and React Three Fiber resources, tutorials, and tools, visit:
+-  [Three.js Resources](https://threejsresources.com/) - A curated collection of Three.js resources
 - [React Three Fiber Documentation](https://docs.pmnd.rs/react-three-fiber)
 - [Three.js Documentation](https://threejs.org/docs/)
-- [React Three Drei](https://github.com/pmndrs/drei)
-- [Vite Documentation](https://vitejs.dev/)
+- [Three.js Examples](https://threejs.org/examples/)
+- [React Three Fiber Examples](https://docs.pmnd.rs/react-three-fiber/getting-started/examples)
 
 ## License
-
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contributing
-
 Feel free to submit issues and enhancement requests!
 
 ## Acknowledgments
+This boilerplate is designed to provide a clean starting point for React Three Fiber projects. For more advanced features and resources, check out [threejsresources.com](https://threejsresources.com/).
 
-This boilerplate is designed to provide a clean starting point for React Three Fiber projects, combining the power of React with the 3D capabilities of Three.js.
+## Author
+[Peter Csipkay](https://petercsipkay.com/)
