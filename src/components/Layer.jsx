@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import interact from "interactjs";
 
-const Layer = ({ onTextureGenerated, onRotationChange, canvasRef }) => {
+const Layer = ({ onTextureGenerated, onRotationChange, onAnimationChange, canvasRef }) => {
   const [selectedPath, setSelectedPath] = useState(null);
   const [color, setColor] = useState("#000000");
   const [uploadedImage, setUploadedImage] = useState(null);
+  const [isAnimating, setIsAnimating] = useState(false);
   const svgRef = useRef(null);
   const containerRef = useRef(null);
   const imgRef = useRef(null);
@@ -13,6 +14,11 @@ const Layer = ({ onTextureGenerated, onRotationChange, canvasRef }) => {
   const [imgPosition, setImgPosition] = useState({ x: 50, y: 50 });
   const [rotation, setRotation] = useState(0);
   const [scale, setScale] = useState(1);
+
+  // Update parent when animation state changes
+  useEffect(() => {
+    onAnimationChange?.(isAnimating);
+  }, [isAnimating, onAnimationChange]);
 
   useEffect(() => {
     if (!svgRef.current) return;
@@ -223,6 +229,20 @@ const Layer = ({ onTextureGenerated, onRotationChange, canvasRef }) => {
               className="w-full sm:w-12 h-12 rounded-lg cursor-pointer border-2 border-gray-300 hover:border-blue-500 transition-colors"
             />
           </div>
+        </div>
+
+        {/* Animation Control */}
+        <div className="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            id="animation-toggle"
+            checked={isAnimating}
+            onChange={(e) => setIsAnimating(e.target.checked)}
+            className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+          />
+          <label htmlFor="animation-toggle" className="text-sm font-medium text-gray-700">
+            Enable Rotation Animation
+          </label>
         </div>
       </div>
 

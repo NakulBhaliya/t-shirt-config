@@ -10,16 +10,24 @@ useGLTF.preload('./t-shirtdraco.glb', true, {
   },
 });
 
-export default function Scene({ texture, rotation }) {
+export default function Scene({ texture, rotation, isAnimating }) {
   const model = useGLTF('./t-shirtdraco.glb');
   const materialRef = useRef(null);
   const textureRef = useRef(null);
   const modelRef = useRef();
+  const animationRef = useRef(0);
 
   // Add rotation animation
   useFrame((state, delta) => {
     if (modelRef.current) {
-      modelRef.current.rotation.y = rotation * Math.PI / 180;
+      if (isAnimating) {
+        // Continuous rotation animation
+        animationRef.current += delta * 1; // Slowed down by 50% (changed from 2 to 1)
+        modelRef.current.rotation.y = animationRef.current;
+      } else {
+        // Manual rotation
+        modelRef.current.rotation.y = rotation * Math.PI / 180;
+      }
     }
   });
 

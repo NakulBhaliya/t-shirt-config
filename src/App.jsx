@@ -14,6 +14,7 @@ function App() {
   const canvasRef = useRef(null)
   const [cameraPosition, setCameraPosition] = useState({ x: 0, y: 0, z: 2.5 })
   const [rotation, setRotation] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
   const [renderer, setRenderer] = useState(null)
   const [sceneRef, setSceneRef] = useState(null)
   const [mainCamera, setMainCamera] = useState(null)
@@ -84,9 +85,16 @@ function App() {
             physicallyCorrectLights: true
           }}
           dpr={[1, Math.min(2, window.devicePixelRatio)]}
+          style={{ 
+            background: 'radial-gradient(circle at center, #ffffff 0%, #f5f5f5 50%, #e0e0e0 100%)'
+          }}
         >
           <Suspense fallback={null}>
-            <Scene texture={currentTexture} rotation={rotation} />
+            <Scene 
+              texture={currentTexture} 
+              rotation={rotation} 
+              isAnimating={isAnimating}
+            />
             <ScreenshotHandler onScreenshot={handleScreenshot} />
             
             {/* Main camera controls */}
@@ -137,6 +145,7 @@ function App() {
           <Layer 
             onTextureGenerated={(textureUrl) => setCurrentTexture(textureUrl)} 
             onRotationChange={setRotation}
+            onAnimationChange={setIsAnimating}
             canvasRef={canvasRef}
           />
         </div>
